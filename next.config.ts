@@ -1,13 +1,19 @@
 import type { NextConfig } from "next";
 
+// STATIC_EXPORT=1 builds a plain-HTML export (used for shareable previews);
+// redirects/headers only apply on a real server, so they're skipped there.
+const isStaticExport = process.env.STATIC_EXPORT === "1";
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   compress: true,
+  ...(isStaticExport ? { output: "export" as const } : {}),
   images: {
     formats: ["image/avif", "image/webp"],
   },
   async redirects() {
+    if (isStaticExport) return [];
     return [
       // Legacy e-commerce/shop URLs from the old site → relevant new pages
       { source: "/shop", destination: "/", permanent: true },
@@ -21,6 +27,7 @@ const nextConfig: NextConfig = {
     ];
   },
   async headers() {
+    if (isStaticExport) return [];
     return [
       {
         source: "/:path*",

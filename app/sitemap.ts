@@ -3,6 +3,8 @@ import { services } from "@/lib/services";
 import { posts } from "@/lib/blog";
 import { absoluteUrl } from "@/lib/site";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
