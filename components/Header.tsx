@@ -67,7 +67,7 @@ export default function Header() {
           ))}
           <Link
             href="/contact"
-            className="rounded-full bg-coral px-5 py-2.5 text-sm font-bold text-white shadow-lift transition hover:-translate-y-0.5 hover:bg-[#f0564a] hover:shadow-lift-lg"
+            className="btn-grad rounded-full px-5 py-2.5 text-sm font-bold text-white shadow-lift transition hover:-translate-y-0.5 hover:shadow-lift-lg"
           >
             Book a Free Trial
           </Link>
@@ -130,7 +130,7 @@ export default function Header() {
           ))}
           <Link
             href="/contact"
-            className="mt-3 block rounded-full bg-coral px-5 py-3 text-center text-base font-bold text-white shadow-lift"
+            className="btn-grad mt-3 block rounded-full px-5 py-3 text-center text-base font-bold text-white shadow-lift"
             onClick={() => setOpen(false)}
           >
             Book a Free Trial

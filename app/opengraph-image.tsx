@@ -17,7 +17,7 @@ export default function OgImage() {
           flexDirection: "column",
           justifyContent: "center",
           padding: "80px",
-          background: "linear-gradient(135deg, #1e1b4b 0%, #312e81 100%)",
+          background: "linear-gradient(135deg, #251c69 0%, #5b2aa8 60%, #b8338f 100%)",
           fontFamily: "Georgia, serif",
           position: "relative",
         }}
@@ -30,7 +30,7 @@ export default function OgImage() {
             width: 420,
             height: 420,
             borderRadius: 9999,
-            background: "rgba(255,107,94,0.35)",
+            background: "rgba(255,77,109,0.4)",
             display: "flex",
           }}
         />
@@ -42,17 +42,17 @@ export default function OgImage() {
             width: 380,
             height: 380,
             borderRadius: 9999,
-            background: "rgba(124,92,255,0.3)",
+            background: "rgba(0,169,240,0.3)",
             display: "flex",
           }}
         />
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
           <svg width="72" height="72" viewBox="0 0 48 48">
-            <rect x="2" y="2" width="44" height="44" rx="13" fill="#fffdf7" />
-            <path d="M14 33 L24 13 L34 33 Z" fill="#ff6b5e" />
-            <path d="M24 13 L34 33 L28.5 33 Z" fill="#f59e0b" />
-            <circle cx="24" cy="33" r="4.5" fill="#1e1b4b" />
-            <circle cx="24" cy="33" r="2" fill="#0d9488" />
+            <rect x="2" y="2" width="44" height="44" rx="13" fill="#fffaf3" />
+            <path d="M14 33 L24 13 L34 33 Z" fill="#ff4d6d" />
+            <path d="M24 13 L34 33 L28.5 33 Z" fill="#ffb300" />
+            <circle cx="24" cy="33" r="4.5" fill="#251c69" />
+            <circle cx="24" cy="33" r="2" fill="#00c49a" />
           </svg>
           <div
             style={{
@@ -77,7 +77,7 @@ export default function OgImage() {
           }}
         >
           <span>Beautiful handwriting.</span>
-          <span style={{ color: "#ff6b5e" }}>Brilliant minds.</span>
+          <span style={{ color: "#ffb300" }}>Brilliant minds.</span>
         </div>
         <div
           style={{

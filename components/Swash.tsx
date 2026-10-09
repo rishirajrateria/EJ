@@ -1,6 +1,6 @@
 export default function Swash({
   children,
-  color = "#ff6b5e",
+  color = "#ff4d6d",
 }: {
   children: React.ReactNode;
   color?: string;

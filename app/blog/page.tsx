@@ -30,8 +30,8 @@ export default function BlogIndexPage() {
   return (
     <>
       <section className="px-4 pb-8 pt-14 text-center sm:px-6 sm:pt-20">
-        <p className="text-sm font-bold uppercase tracking-widest text-coral">The Junction Journal</p>
-        <h1 className="mx-auto mt-3 max-w-2xl font-display text-4xl font-semibold leading-[1.1] sm:text-5xl">
+        <p className="sticker bg-coral-soft text-coral">📰 The Junction Journal</p>
+        <h1 className="mx-auto mt-5 max-w-2xl font-display text-4xl font-semibold leading-[1.1] sm:text-5xl">
           Guides parents <Swash>actually use</Swash>
         </h1>
         <p className="mx-auto mt-5 max-w-xl text-lg text-ink-soft">
@@ -45,9 +45,9 @@ export default function BlogIndexPage() {
           {/* Featured post */}
           <Link
             href={`/blog/${featured.slug}`}
-            className="group grid overflow-hidden rounded-[2rem] border border-ink/5 bg-navy text-white shadow-lift-lg transition hover:-translate-y-1 md:grid-cols-2"
+            className="bg-night group grid overflow-hidden rounded-[2rem] text-white shadow-lift-lg transition hover:-translate-y-1 md:grid-cols-2"
           >
-            <div className="relative flex min-h-56 items-center justify-center overflow-hidden bg-navy p-10">
+            <div className="relative flex min-h-56 items-center justify-center overflow-hidden p-10">
               <div className="pointer-events-none absolute -left-16 -top-16 h-56 w-56 rounded-full bg-coral/30 blur-3xl" aria-hidden="true" />
               <div className="pointer-events-none absolute -bottom-16 -right-10 h-56 w-56 rounded-full bg-violet/30 blur-3xl" aria-hidden="true" />
               <span className="relative text-8xl transition group-hover:scale-110" aria-hidden="true">
@@ -82,7 +82,7 @@ export default function BlogIndexPage() {
                 <Link
                   key={p.slug}
                   href={`/blog/${p.slug}`}
-                  className="group flex flex-col rounded-3xl border border-ink/5 bg-white p-7 shadow-lift transition hover:-translate-y-1.5 hover:shadow-lift-lg"
+                  className="group flex flex-col rounded-3xl border-2 border-ink/5 bg-white p-7 shadow-lift transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lift-lg"
                 >
                   <div className="flex items-center justify-between">
                     <span className={`flex h-12 w-12 items-center justify-center rounded-2xl ${a.soft} text-2xl transition group-hover:scale-110`} aria-hidden="true">

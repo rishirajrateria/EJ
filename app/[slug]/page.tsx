@@ -42,11 +42,11 @@ export async function generateMetadata({
 }
 
 const accentHex: Record<string, string> = {
-  coral: "#ff6b5e",
-  teal: "#0d9488",
-  violet: "#7c5cff",
-  amber: "#f59e0b",
-  sky: "#0284c7",
+  coral: "#ff4d6d",
+  teal: "#00a87e",
+  violet: "#8a4dff",
+  amber: "#ffb300",
+  sky: "#0097e0",
 };
 
 export default async function ServicePage({
@@ -120,10 +120,11 @@ export default async function ServicePage({
       <JsonLd data={breadcrumbJsonLd} />
 
       {/* ───────── Hero ───────── */}
-      <section className="relative overflow-hidden px-4 pb-16 pt-14 sm:px-6 sm:pt-20">
-        <div className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full opacity-10 blur-3xl" style={{ background: accentHex[service.accent] }} aria-hidden="true" />
+      <section className="confetti relative overflow-hidden px-4 pb-16 pt-14 sm:px-6 sm:pt-20">
+        <div className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full opacity-15 blur-3xl" style={{ background: accentHex[service.accent] }} aria-hidden="true" />
+        <div className="pointer-events-none absolute -left-32 bottom-0 h-72 w-72 rounded-full bg-violet/10 blur-3xl" aria-hidden="true" />
         <div className="mx-auto max-w-4xl text-center">
-          <p className={`inline-flex items-center gap-2 rounded-full ${a.soft} px-4 py-1.5 text-xs font-bold uppercase tracking-wide ${a.text}`}>
+          <p className={`sticker ${a.soft} ${a.text}`}>
             <span aria-hidden="true">{service.emoji}</span>
             {service.hero.eyebrow}
           </p>
@@ -168,8 +169,8 @@ export default async function ServicePage({
           </h2>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {service.outcomes.map((o, i) => (
-              <div key={o.title} className="rounded-3xl border border-ink/5 bg-white p-7 shadow-lift">
-                <span className={`flex h-10 w-10 items-center justify-center rounded-full ${a.soft} font-display text-base font-bold ${a.text}`}>
+              <div key={o.title} className={`rounded-3xl border-2 border-ink/5 bg-white p-7 shadow-lift transition hover:-translate-y-1 hover:shadow-lift-lg ${i % 2 === 1 ? "lg:translate-y-3" : ""}`}>
+                <span className={`flex h-10 w-10 -rotate-6 items-center justify-center rounded-xl ${a.soft} font-display text-base font-bold ${a.text}`}>
                   {i + 1}
                 </span>
                 <h3 className="mt-4 font-display text-lg font-semibold">{o.title}</h3>
@@ -189,10 +190,10 @@ export default async function ServicePage({
           <ol className="relative mt-14 space-y-10 before:absolute before:bottom-6 before:left-6 before:top-2 before:w-0.5 before:bg-ink/10 sm:before:left-7">
             {service.steps.map((s, i) => (
               <li key={s.title} className="relative flex gap-6 pl-0">
-                <span className={`relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full ${a.bg} font-display text-lg font-bold text-white shadow-lift sm:h-14 sm:w-14`}>
+                <span className={`relative z-10 flex h-12 w-12 shrink-0 -rotate-6 items-center justify-center rounded-2xl ${a.bg} font-display text-lg font-bold text-white shadow-lift sm:h-14 sm:w-14`}>
                   {i + 1}
                 </span>
-                <div className="rounded-3xl border border-ink/5 bg-white p-6 shadow-lift">
+                <div className="rounded-3xl border-2 border-ink/5 bg-white p-6 shadow-lift transition hover:-translate-y-0.5">
                   <h3 className="font-display text-lg font-semibold">{s.title}</h3>
                   <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{s.text}</p>
                 </div>

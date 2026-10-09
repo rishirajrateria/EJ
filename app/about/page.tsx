@@ -53,8 +53,8 @@ export default function AboutPage() {
 
       <section className="px-4 pb-16 pt-14 sm:px-6 sm:pt-20">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-bold uppercase tracking-widest text-coral">About us</p>
-          <h1 className="mt-3 font-display text-4xl font-semibold leading-[1.1] sm:text-5xl">
+          <p className="sticker bg-violet-soft text-violet">👋 About us</p>
+          <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.1] sm:text-5xl">
             Where skills <Swash color="#0d9488">meet</Swash>
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-ink-soft">
@@ -91,8 +91,8 @@ export default function AboutPage() {
               { value: "UK & USA", label: "time-zone friendly" },
               { value: "4.9★", label: "average rating" },
             ].map((s) => (
-              <div key={s.label} className="rounded-3xl bg-white p-6 text-center shadow-lift">
-                <p className="font-display text-3xl font-bold text-coral">{s.value}</p>
+              <div key={s.label} className={`rounded-3xl bg-white p-6 text-center shadow-lift transition hover:-translate-y-1 ${s.label === "students taught" || s.label === "average rating" ? "-rotate-1" : "rotate-1"}`}>
+                <p className="text-grad-candy font-display text-3xl font-bold">{s.value}</p>
                 <p className="mt-1 text-xs font-semibold text-ink-soft">{s.label}</p>
               </div>
             ))}

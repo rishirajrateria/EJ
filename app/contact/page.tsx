@@ -44,8 +44,8 @@ Thank you!`
 
       <section className="px-4 pb-20 pt-14 sm:px-6 sm:pt-20">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-bold uppercase tracking-widest text-teal">Free trial class</p>
-          <h1 className="mt-3 font-display text-4xl font-semibold leading-[1.1] sm:text-5xl">
+          <p className="sticker bg-teal-soft text-teal">🎁 Free trial class</p>
+          <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.1] sm:text-5xl">
             Let&apos;s <Swash>get started</Swash>
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-lg text-ink-soft">
@@ -57,7 +57,7 @@ Thank you!`
           <div className="mt-10 grid gap-6 sm:grid-cols-2">
             <a
               href={`mailto:${site.email}?subject=${mailSubject}&body=${mailBody}`}
-              className="group rounded-3xl bg-navy p-8 text-left text-white shadow-lift-lg transition hover:-translate-y-1"
+              className="bg-night group rounded-3xl p-8 text-left text-white shadow-lift-lg transition hover:-translate-y-1 hover:-rotate-1"
             >
               <span className="text-3xl" aria-hidden="true">📧</span>
               <h2 className="mt-4 font-display text-xl font-semibold">Email us</h2>
