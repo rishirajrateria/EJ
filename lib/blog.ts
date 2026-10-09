@@ -10,7 +10,7 @@ export type Post = {
   updated?: string; // ISO
   readMinutes: number;
   category: "Handwriting" | "Abacus" | "Cursive" | "Parenting";
-  accent: "coral" | "teal" | "violet" | "amber" | "sky";
+  accent: "coral" | "teal" | "violet" | "sun" | "sky";
   emoji: string;
   keyTakeaways: string[];
   /** Trusted, hand-authored HTML written in this repo (no user input). */

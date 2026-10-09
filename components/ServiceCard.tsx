@@ -6,7 +6,7 @@ const cardGrad: Record<Service["accent"], string> = {
   coral: "bg-gradient-to-br from-white to-coral-soft/60",
   teal: "bg-gradient-to-br from-white to-teal-soft/60",
   violet: "bg-gradient-to-br from-white to-violet-soft/60",
-  amber: "bg-gradient-to-br from-white to-amber-soft/60",
+  sun: "bg-gradient-to-br from-white to-sun-soft/60",
   sky: "bg-gradient-to-br from-white to-sky-soft/60",
 };
 

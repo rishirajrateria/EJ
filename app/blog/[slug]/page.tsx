@@ -126,7 +126,7 @@ export default async function BlogPostPage({
           </header>
 
           {/* Key takeaways — snippet-friendly for search engines and AI assistants */}
-          <aside className="mt-8 rounded-3xl border-2 border-dashed border-amber/50 bg-amber-soft/60 p-7" aria-label="Key takeaways">
+          <aside className="mt-8 rounded-3xl border-2 border-dashed border-sun/50 bg-sun-soft/60 p-7" aria-label="Key takeaways">
             <h2 className="flex items-center gap-2 font-display text-lg font-semibold">
               <span aria-hidden="true">⚡</span> Key takeaways
             </h2>

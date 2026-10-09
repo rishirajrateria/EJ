@@ -50,7 +50,7 @@ export default function OgImage() {
           <svg width="72" height="72" viewBox="0 0 48 48">
             <rect x="2" y="2" width="44" height="44" rx="13" fill="#fffaf3" />
             <path d="M14 33 L24 13 L34 33 Z" fill="#ff4d6d" />
-            <path d="M24 13 L34 33 L28.5 33 Z" fill="#ffb300" />
+            <path d="M24 13 L34 33 L28.5 33 Z" fill="#ffd23f" />
             <circle cx="24" cy="33" r="4.5" fill="#251c69" />
             <circle cx="24" cy="33" r="2" fill="#00c49a" />
           </svg>
@@ -77,7 +77,7 @@ export default function OgImage() {
           }}
         >
           <span>Beautiful handwriting.</span>
-          <span style={{ color: "#ffb300" }}>Brilliant minds.</span>
+          <span style={{ color: "#ffd23f" }}>Brilliant minds.</span>
         </div>
         <div
           style={{
@@ -93,7 +93,7 @@ export default function OgImage() {
           style={{
             marginTop: 20,
             fontSize: 26,
-            color: "#fbbf24",
+            color: "#ffd23f",
             display: "flex",
             fontWeight: 600,
           }}

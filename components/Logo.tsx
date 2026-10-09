@@ -9,8 +9,8 @@ export default function Logo({ className = "h-9 w-9" }: { className?: string }) 
       </defs>
       <rect x="2" y="2" width="44" height="44" rx="13" fill="url(#lg-bg)" />
       {/* pencil nib forming the "junction" */}
-      <path d="M14 33 L24 13 L34 33 Z" fill="#ffb300" />
-      <path d="M24 13 L34 33 L28.5 33 Z" fill="#ff8a3d" />
+      <path d="M14 33 L24 13 L34 33 Z" fill="#ffe066" />
+      <path d="M24 13 L34 33 L28.5 33 Z" fill="#ffd23f" />
       <circle cx="24" cy="33" r="4.5" fill="#fffaf3" />
       <circle cx="24" cy="33" r="2" fill="#00c49a" />
     </svg>

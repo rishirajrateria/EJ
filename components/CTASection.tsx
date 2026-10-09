@@ -13,7 +13,7 @@ export default function CTASection({
         {/* decorative orbs */}
         <div className="pointer-events-none absolute -left-20 -top-20 h-64 w-64 rounded-full bg-coral/40 blur-3xl" aria-hidden="true" />
         <div className="pointer-events-none absolute -bottom-24 -right-16 h-72 w-72 rounded-full bg-sky/30 blur-3xl" aria-hidden="true" />
-        <div className="pointer-events-none absolute right-24 top-10 h-24 w-24 rounded-full bg-amber/50 blur-2xl" aria-hidden="true" />
+        <div className="pointer-events-none absolute right-24 top-10 h-24 w-24 rounded-full bg-sun/50 blur-2xl" aria-hidden="true" />
         {/* floating doodles */}
         <span className="animate-float pointer-events-none absolute left-8 top-8 text-3xl" style={{ "--float-rotate": "-10deg" } as React.CSSProperties} aria-hidden="true">✨</span>
         <span className="animate-float-slow pointer-events-none absolute bottom-8 right-10 text-3xl" style={{ "--float-rotate": "12deg" } as React.CSSProperties} aria-hidden="true">🎈</span>

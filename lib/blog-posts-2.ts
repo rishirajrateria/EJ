@@ -10,7 +10,7 @@ export const postsBatchTwo: Post[] = [
     date: "2026-08-30",
     readMinutes: 5,
     category: "Cursive",
-    accent: "amber",
+    accent: "sun",
     emoji: "➰",
     keyTakeaways: [
       "Most children learn print first (ages 4–6), then cursive from around age 7.",

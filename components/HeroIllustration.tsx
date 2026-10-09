@@ -5,7 +5,7 @@ export default function HeroIllustration() {
       <svg viewBox="0 0 460 460" className="absolute inset-0 h-full w-full">
         <path
           d="M230 18c70 0 150 28 185 92s18 150-22 205-93 95-163 95S99 370 60 315 10 180 48 118 160 18 230 18z"
-          fill="#fff1d1"
+          fill="#f3edff"
         />
         <path
           d="M230 48c58 0 124 23 153 76s15 124-18 169-77 79-135 79-124-33-156-78-41-112-10-163S172 48 230 48z"
@@ -15,7 +15,7 @@ export default function HeroIllustration() {
         {/* rainbow arc */}
         <g fill="none" strokeLinecap="round" opacity="0.9">
           <path d="M40 150 Q 100 70 185 60" stroke="#ff4d6d" strokeWidth="7" />
-          <path d="M48 165 Q 106 88 188 76" stroke="#ffb300" strokeWidth="7" />
+          <path d="M48 165 Q 106 88 188 76" stroke="#ffd23f" strokeWidth="7" />
           <path d="M56 180 Q 113 106 191 92" stroke="#00c49a" strokeWidth="7" />
           <path d="M64 195 Q 120 124 194 108" stroke="#8a4dff" strokeWidth="7" />
         </g>
@@ -37,14 +37,14 @@ export default function HeroIllustration() {
           />
           {/* pencil */}
           <g transform="translate(236 30) rotate(40)">
-            <rect x="0" y="0" width="16" height="52" rx="2" fill="#ffb300" />
+            <rect x="0" y="0" width="16" height="52" rx="2" fill="#ffd23f" />
             <rect x="0" y="0" width="16" height="10" rx="2" fill="#ff4d6d" />
-            <path d="M0 52 L8 70 L16 52 Z" fill="#ffdf9e" />
+            <path d="M0 52 L8 70 L16 52 Z" fill="#ffeaa8" />
             <path d="M5 62 L8 70 L11 62 Z" fill="#241f54" />
           </g>
           {/* sparkles near the neat writing */}
           <g>
-            <path d="M270 55 l2.5 6 6 2.5 -6 2.5 -2.5 6 -2.5 -6 -6 -2.5 6 -2.5z" fill="#ffb300" />
+            <path d="M270 55 l2.5 6 6 2.5 -6 2.5 -2.5 6 -2.5 -6 -6 -2.5 6 -2.5z" fill="#ffd23f" />
             <circle cx="248" cy="105" r="3.5" fill="#00c49a" />
             <circle cx="70" cy="40" r="3.5" fill="#8a4dff" />
             <circle cx="210" cy="150" r="3" fill="#ff4d6d" />
@@ -63,7 +63,7 @@ export default function HeroIllustration() {
           <line x1="45" y1="10" x2="45" y2="60" stroke="#4d4490" strokeWidth="3" />
           <line x1="68" y1="10" x2="68" y2="60" stroke="#4d4490" strokeWidth="3" />
           <circle cx="22" cy="18" r="6" fill="#ff4d6d" />
-          <circle cx="22" cy="50" r="6" fill="#ffb300" />
+          <circle cx="22" cy="50" r="6" fill="#ffd23f" />
           <circle cx="45" cy="30" r="6" fill="#00c49a" />
           <circle cx="45" cy="54" r="6" fill="#ff4d6d" />
           <circle cx="68" cy="16" r="6" fill="#8a4dff" />

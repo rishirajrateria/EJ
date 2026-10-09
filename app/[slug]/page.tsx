@@ -45,7 +45,7 @@ const accentHex: Record<string, string> = {
   coral: "#ff4d6d",
   teal: "#00a87e",
   violet: "#8a4dff",
-  amber: "#ffb300",
+  sun: "#ffd23f",
   sky: "#0097e0",
 };
 
@@ -147,7 +147,7 @@ export default async function ServicePage({
           <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
               href="/contact"
-              className={`w-full rounded-full ${a.bg} px-8 py-4 text-center text-base font-bold text-white shadow-lift-lg transition hover:-translate-y-0.5 hover:opacity-90 sm:w-auto`}
+              className={`w-full rounded-full ${a.bg} ${a.fg} px-8 py-4 text-center text-base font-bold shadow-lift-lg transition hover:-translate-y-0.5 hover:opacity-90 sm:w-auto`}
             >
               Book a Free Trial Class
             </Link>
@@ -190,7 +190,7 @@ export default async function ServicePage({
           <ol className="relative mt-14 space-y-10 before:absolute before:bottom-6 before:left-6 before:top-2 before:w-0.5 before:bg-ink/10 sm:before:left-7">
             {service.steps.map((s, i) => (
               <li key={s.title} className="relative flex gap-6 pl-0">
-                <span className={`relative z-10 flex h-12 w-12 shrink-0 -rotate-6 items-center justify-center rounded-2xl ${a.bg} font-display text-lg font-bold text-white shadow-lift sm:h-14 sm:w-14`}>
+                <span className={`relative z-10 flex h-12 w-12 shrink-0 -rotate-6 items-center justify-center rounded-2xl ${a.bg} ${a.fg} font-display text-lg font-bold shadow-lift sm:h-14 sm:w-14`}>
                   {i + 1}
                 </span>
                 <div className="rounded-3xl border-2 border-ink/5 bg-white p-6 shadow-lift transition hover:-translate-y-0.5">

@@ -151,7 +151,7 @@ export default function HomePage() {
             <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4 lg:max-w-lg">
               {stats.map((s) => (
                 <div key={s.label} className="text-center lg:text-left">
-                  <p className="text-grad-sunset font-display text-2xl font-bold">{s.value}</p>
+                  <p className="text-grad-berry font-display text-2xl font-bold">{s.value}</p>
                   <p className="text-xs font-semibold text-ink-soft">{s.label}</p>
                 </div>
               ))}
@@ -183,7 +183,7 @@ export default function HomePage() {
             ))}
             {/* Free trial filler card */}
             <div className="bg-night relative flex flex-col justify-center overflow-hidden rounded-3xl p-7 text-white shadow-lift">
-              <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-amber/30 blur-2xl" aria-hidden="true" />
+              <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-sun/30 blur-2xl" aria-hidden="true" />
               <p className="text-3xl" aria-hidden="true">🎁</p>
               <h3 className="mt-4 font-display text-xl font-semibold">Not sure where to start?</h3>
               <p className="mt-2 text-sm leading-relaxed text-white/75">
@@ -204,7 +204,7 @@ export default function HomePage() {
         </div>
       </section>
       <div className="bg-cream">
-        <Wave fill="#fffaf3" />
+        <Wave fill="#fffbfa" />
       </div>
 
       {/* ───────────────────────── Why us ───────────────────────── */}
@@ -253,14 +253,14 @@ export default function HomePage() {
 
       {/* ───────────────────────── How it works ───────────────────────── */}
       <div className="bg-paper">
-        <Wave fill="#fff1d1" />
+        <Wave fill="#f3edff" />
       </div>
       <section className="bg-cream px-4 pb-20 pt-10 sm:px-6">
         <div className="mx-auto max-w-5xl">
           <div className="mx-auto max-w-2xl text-center">
             <p className="sticker bg-violet-soft text-violet">🚀 Getting started</p>
             <h2 className="mt-5 font-display text-3xl font-semibold sm:text-4xl">
-              Three steps to <span className="text-grad-sunset">transformation</span>
+              Three steps to <span className="text-grad-berry">transformation</span>
             </h2>
           </div>
           <ol className="mt-14 grid gap-8 sm:grid-cols-3 sm:gap-6">
@@ -278,14 +278,14 @@ export default function HomePage() {
         </div>
       </section>
       <div className="bg-cream">
-        <Wave fill="#fffaf3" />
+        <Wave fill="#fffbfa" />
       </div>
 
       {/* ───────────────────────── Testimonials ───────────────────────── */}
       <section className="px-4 pb-20 pt-10 sm:px-6">
         <div className="mx-auto max-w-6xl">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="sticker bg-amber-soft text-amber">💬 Happy families</p>
+            <p className="sticker bg-sun-soft text-ink">💬 Happy families</p>
             <h2 className="mt-5 font-display text-3xl font-semibold sm:text-4xl">
               Results parents <Swash>brag about</Swash>
             </h2>
@@ -293,7 +293,7 @@ export default function HomePage() {
           <div className="mt-14 grid gap-6 md:grid-cols-3">
             {testimonials.map((t) => (
               <figure key={t.name} className={`flex flex-col rounded-3xl border-2 border-ink/5 bg-white p-8 shadow-lift transition hover:rotate-0 hover:shadow-lift-lg ${t.tilt}`}>
-                <p className="text-amber" aria-label="5 out of 5 stars">★★★★★</p>
+                <p className="text-sun" aria-label="5 out of 5 stars">★★★★★</p>
                 <blockquote className="mt-4 flex-1 leading-relaxed text-ink">
                   “{t.quote}”
                 </blockquote>
@@ -309,7 +309,7 @@ export default function HomePage() {
 
       {/* ───────────────────────── FAQ ───────────────────────── */}
       <div className="bg-paper">
-        <Wave fill="#fff1d1" />
+        <Wave fill="#f3edff" />
       </div>
       <section className="bg-cream px-4 pb-20 pt-10 sm:px-6">
         <div className="mx-auto max-w-4xl">
@@ -323,7 +323,7 @@ export default function HomePage() {
         </div>
       </section>
       <div className="bg-cream">
-        <Wave fill="#fffaf3" />
+        <Wave fill="#fffbfa" />
       </div>
 
       <CTASection />

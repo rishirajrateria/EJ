@@ -16,7 +16,7 @@ export type Service = {
   ages: string;
   duration: string;
   format: string;
-  accent: "coral" | "teal" | "violet" | "amber" | "sky";
+  accent: "coral" | "teal" | "violet" | "sun" | "sky";
   emoji: string;
   outcomes: { title: string; text: string }[];
   steps: { title: string; text: string }[];
@@ -148,7 +148,7 @@ export const services: Service[] = [
     ages: "Ages 10+ and adults",
     duration: "8 week course",
     format: "Live online · small group",
-    accent: "amber",
+    accent: "sun",
     emoji: "🖋️",
     outcomes: [
       { title: "Core strokes & drills", text: "The eight foundational strokes behind every style." },
