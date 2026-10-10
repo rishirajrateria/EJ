@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
-import Swash from "@/components/Swash";
-import CTASection from "@/components/CTASection";
+import TrialSlip from "@/components/TrialSlip";
+import ReportCard from "@/components/ReportCard";
+import SectionHead from "@/components/SectionHead";
+import Checklist from "@/components/Checklist";
 import JsonLd from "@/components/JsonLd";
+import { Underline } from "@/components/Marks";
 import { site, absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -16,24 +19,20 @@ export const metadata: Metadata = {
 
 const values = [
   {
-    emoji: "🔬",
     title: "Method over worksheets",
-    text: "Every programme is a structured sequence of levels with measurable milestones — because random practice produces random results.",
+    text: "Every programme is a sequence of levels with measurable milestones, because random practice gives random results.",
   },
   {
-    emoji: "👀",
     title: "Live, always",
-    text: "No pre-recorded videos, ever. Skills like handwriting and mental math are built by instant feedback from a real teacher.",
+    text: "No pre-recorded videos, ever. Handwriting and mental arithmetic are built by instant feedback from a real teacher.",
   },
   {
-    emoji: "🤝",
     title: "Honest with parents",
-    text: "Clear progress reviews, realistic timelines, and if we think a child should wait six months — we say so.",
+    text: "Clear progress reviews and realistic timelines. If we think a child should wait six months, we say so.",
   },
   {
-    emoji: "🎉",
     title: "Joy is the strategy",
-    text: "Children practise what they enjoy. Games, challenges and celebrated wins are built into every single class.",
+    text: "Children practise what they enjoy, so games, challenges and celebrated wins are part of every class.",
   },
 ];
 
@@ -51,75 +50,61 @@ export default function AboutPage() {
     <>
       <JsonLd data={aboutJsonLd} />
 
-      <section className="px-4 pb-16 pt-14 sm:px-6 sm:pt-20">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="sticker bg-violet-soft text-violet">👋 About us</p>
-          <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.1] sm:text-5xl">
-            Where skills <Swash color="#0d9488">meet</Swash>
+      <section className="paper-ruled paper-margin px-4 pb-16 pt-12 sm:px-6 sm:pt-16">
+        <div className="mx-auto max-w-6xl">
+          <h1>
+            <span className="label-caps block text-blue">About us</span>
+            <span className="mt-4 block max-w-4xl font-display text-[clamp(2.8rem,7vw,5rem)] font-extrabold leading-[0.98] tracking-[-0.03em] [font-stretch:88%]">
+              Where neat writing meets{" "}
+              <span className="relative inline-block font-script text-[0.72em] font-normal tracking-normal text-redpen [font-stretch:100%]">
+                quick minds
+                <Underline />
+              </span>
+            </span>
           </h1>
-          <p className="mt-6 text-lg leading-relaxed text-ink-soft">
-            A junction is where paths come together. {site.name} is where
-            beautiful handwriting meets brilliant mental math — live online
-            classes taught by specialists to children and adults across the
-            United Kingdom and United States.
+          <p className="mt-8 max-w-2xl text-lg leading-relaxed text-ink-soft">
+            {site.name} teaches handwriting, cursive, calligraphy, abacus and phonics
+            in small live online classes, to children and adults across the United
+            Kingdom and the United States.
           </p>
         </div>
       </section>
 
-      <section className="bg-cream px-4 py-16 sm:px-6">
-        <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-2 md:items-center">
-          <div>
-            <h2 className="font-display text-3xl font-semibold">Why we exist</h2>
-            <p className="mt-5 leading-relaxed text-ink-soft">
-              Schools no longer have time to properly teach the foundational
-              skills that quietly shape a child&apos;s confidence: forming
-              letters correctly, writing fluently, calculating comfortably.
-              Parents see the result in messy books and math anxiety — and are
-              told to &quot;practise more at home&quot;.
+      <section className="px-4 py-20 sm:px-6 sm:py-24">
+        <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+          <SectionHead title="Why we exist" />
+          <div className="space-y-5 text-lg leading-relaxed text-ink-soft">
+            <p>
+              Schools rarely have time to teach the skills that quietly shape a
+              child&apos;s confidence: forming letters correctly, writing fluently,
+              calculating comfortably. Parents see the result in messy books and
+              number worries, and are told to <span className="hl text-ink">practise more at home</span>.
             </p>
-            <p className="mt-4 leading-relaxed text-ink-soft">
-              We fill exactly that gap. Specialist tutors, proven step-by-step
-              methods, and small live classes where every stroke and every
-              bead-move gets watched and corrected. Practice without feedback
-              rehearses mistakes; practice with feedback transforms students.
+            <p>
+              We fill that gap with specialist tutors, step-by-step methods and small
+              live classes where every stroke and every bead gets watched and
+              corrected. <strong className="text-ink">Practice without feedback repeats mistakes. Practice with feedback changes them.</strong>
             </p>
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            {[
-              { value: "5", label: "specialist programmes" },
-              { value: "2,000+", label: "students taught" },
-              { value: "UK & USA", label: "time-zone friendly" },
-              { value: "4.9★", label: "average rating" },
-            ].map((s) => (
-              <div key={s.label} className={`rounded-3xl bg-white p-6 text-center shadow-lift transition hover:-translate-y-1 ${s.label === "students taught" || s.label === "average rating" ? "-rotate-1" : "rotate-1"}`}>
-                <p className="text-grad-candy font-display text-3xl font-bold">{s.value}</p>
-                <p className="mt-1 text-xs font-semibold text-ink-soft">{s.label}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
 
-      <section className="px-4 py-16 sm:px-6">
-        <div className="mx-auto max-w-5xl">
-          <h2 className="text-center font-display text-3xl font-semibold">
-            What we <Swash>stand for</Swash>
-          </h2>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2">
-            {values.map((v) => (
-              <div key={v.title} className="flex gap-5 rounded-3xl border border-ink/5 bg-white p-7 shadow-lift">
-                <span className="text-3xl" aria-hidden="true">{v.emoji}</span>
-                <div>
-                  <h3 className="font-display text-lg font-semibold">{v.title}</h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{v.text}</p>
-                </div>
-              </div>
-            ))}
+      <section className="paper-squared border-y-2 border-rule px-4 py-20 sm:px-6 sm:py-24">
+        <div className="mx-auto max-w-6xl">
+          <ReportCard />
+        </div>
+      </section>
+
+      <section className="px-4 py-20 sm:px-6 sm:py-24">
+        <div className="mx-auto max-w-6xl">
+          <SectionHead title="What we stand for" />
+          <div className="mt-12">
+            <Checklist items={values} />
           </div>
         </div>
       </section>
 
-      <CTASection />
+      <TrialSlip />
     </>
   );
 }

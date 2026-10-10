@@ -1,3 +1,5 @@
+import type { Accent } from "./palette";
+
 export type ServiceFAQ = { q: string; a: string };
 
 export type Service = {
@@ -16,8 +18,7 @@ export type Service = {
   ages: string;
   duration: string;
   format: string;
-  accent: "coral" | "teal" | "violet" | "sun" | "sky";
-  emoji: string;
+  accent: Accent;
   outcomes: { title: string; text: string }[];
   steps: { title: string; text: string }[];
   faqs: ServiceFAQ[];
@@ -42,8 +43,7 @@ export const services: Service[] = [
     ages: "Ages 5+ and adults",
     duration: "8–12 week levels",
     format: "Live online · 1:1 & small group",
-    accent: "coral",
-    emoji: "✍️",
+    accent: "blue",
     outcomes: [
       { title: "Legible letterforms", text: "Correct formation of every letter, taught stroke by stroke." },
       { title: "Consistent size & spacing", text: "Words that sit neatly on the line with even gaps." },
@@ -98,7 +98,6 @@ export const services: Service[] = [
     duration: "10 week programme",
     format: "Live online · 1:1 & small group",
     accent: "violet",
-    emoji: "➰",
     outcomes: [
       { title: "Every join mastered", text: "All letter families and joins taught in a logical order." },
       { title: "Rhythm & flow", text: "Smooth, continuous writing that reduces hand fatigue." },
@@ -148,8 +147,7 @@ export const services: Service[] = [
     ages: "Ages 10+ and adults",
     duration: "8 week course",
     format: "Live online · small group",
-    accent: "sun",
-    emoji: "🖋️",
+    accent: "pink",
     outcomes: [
       { title: "Core strokes & drills", text: "The eight foundational strokes behind every style." },
       { title: "Full lowercase & capitals", text: "A complete modern calligraphy alphabet." },
@@ -199,8 +197,7 @@ export const services: Service[] = [
     ages: "Ages 5–13",
     duration: "Level-based · 3 months per level",
     format: "Live online · small group",
-    accent: "teal",
-    emoji: "🧮",
+    accent: "green",
     outcomes: [
       { title: "Lightning mental math", text: "Multi-digit sums solved in the head, visualising the beads." },
       { title: "Sharper focus", text: "Concentration and listening skills that carry into school." },
@@ -254,8 +251,7 @@ export const services: Service[] = [
     ages: "Ages 3–8",
     duration: "Level-based · 10 weeks per level",
     format: "Live online · 1:1 & small group",
-    accent: "sky",
-    emoji: "📖",
+    accent: "yellow",
     outcomes: [
       { title: "All 44 sounds", text: "Every phoneme and its spellings, taught in a proven order." },
       { title: "Blending & segmenting", text: "The core skills that turn sounds into reading and spelling." },

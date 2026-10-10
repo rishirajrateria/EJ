@@ -2,9 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import JsonLd from "@/components/JsonLd";
-import CTASection from "@/components/CTASection";
-import { accentStyles } from "@/components/accents";
+import TrialSlip from "@/components/TrialSlip";
+import Logo from "@/components/Logo";
+import Glyph, { categoryGlyph } from "@/components/Glyph";
+import { Tick } from "@/components/Marks";
 import { posts, getPost } from "@/lib/blog";
+import { palette } from "@/lib/palette";
 import { site, absoluteUrl } from "@/lib/site";
 
 export const dynamicParams = false;
@@ -60,7 +63,7 @@ export default async function BlogPostPage({
   const post = getPost(slug);
   if (!post) notFound();
 
-  const a = accentStyles[post.accent];
+  const c = palette[post.accent];
   const related = posts.filter((p) => p.slug !== post.slug).slice(0, 3);
 
   const articleJsonLd = {
@@ -102,83 +105,73 @@ export default async function BlogPostPage({
       <JsonLd data={articleJsonLd} />
       <JsonLd data={breadcrumbJsonLd} />
 
-      <article className="px-4 pb-20 pt-12 sm:px-6 sm:pt-16">
+      <article className="paper-margin px-4 pb-20 pt-10 sm:px-6 sm:pt-14">
         <div className="mx-auto max-w-3xl">
-          <nav aria-label="Breadcrumb" className="text-sm font-semibold text-ink-soft">
-            <Link href="/blog" className="transition hover:text-coral">
+          <nav aria-label="Breadcrumb" className="text-sm font-bold text-ink-soft">
+            <Link href="/blog" className="hover:text-ink">
               ← All guides
             </Link>
           </nav>
 
-          <header className="mt-6">
-            <div className="flex flex-wrap items-center gap-3 text-xs font-bold">
-              <span className={`rounded-full ${a.soft} ${a.text} px-3 py-1`}>{post.category}</span>
-              <time dateTime={post.date} className="text-ink-soft">
-                {formatDate(post.date)}
-              </time>
-              <span className="text-ink-soft" aria-hidden="true">·</span>
-              <span className="text-ink-soft">{post.readMinutes} min read</span>
+          <header className="mt-7">
+            <div className="flex flex-wrap items-center gap-3 text-sm font-bold text-ink-soft">
+              <span className={`inline-flex items-center gap-1.5 rounded-md px-2.5 py-1 ${c.cover} ${c.onCover}`}>
+                <Glyph name={categoryGlyph[post.category]} className="h-4 w-4" />
+                <span className="label-caps">{post.category}</span>
+              </span>
+              <time dateTime={post.date}>{formatDate(post.date)}</time>
+              <span aria-hidden="true">·</span>
+              <span>{post.readMinutes} min read</span>
             </div>
-            <h1 className="mt-5 font-display text-3xl font-semibold leading-[1.15] tracking-tight sm:text-4xl">
+            <h1 className="mt-5 font-display text-[clamp(2.1rem,5vw,3.25rem)] font-extrabold leading-[1.06] tracking-tight [font-stretch:92%]">
               {post.title}
             </h1>
-            <p className="mt-4 text-lg leading-relaxed text-ink-soft">{post.description}</p>
+            <p className="mt-5 text-lg leading-relaxed text-ink-soft">{post.description}</p>
           </header>
 
-          {/* Key takeaways — snippet-friendly for search engines and AI assistants */}
-          <aside className="mt-8 rounded-3xl border-2 border-dashed border-sun/50 bg-sun-soft/60 p-7" aria-label="Key takeaways">
-            <h2 className="flex items-center gap-2 font-display text-lg font-semibold">
-              <span aria-hidden="true">⚡</span> Key takeaways
-            </h2>
-            <ul className="mt-4 space-y-2.5">
+          {/* Key takeaways, pinned like a teacher's note */}
+          <aside className="relative mt-10 rounded-[3px] bg-white px-6 pb-6 pt-7 shadow-page sm:px-8" aria-label="Key takeaways">
+            <span className="tape -top-3 left-8 -rotate-3" aria-hidden="true" />
+            <h2 className="font-hand text-xl font-bold text-redpen">Key takeaways</h2>
+            <ul className="mt-4 space-y-3">
               {post.keyTakeaways.map((t) => (
-                <li key={t} className="flex gap-3 text-sm leading-relaxed text-ink-soft">
-                  <svg className={`mt-0.5 h-5 w-5 shrink-0 ${a.text}`} viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.7-9.3a1 1 0 00-1.4-1.4L9 10.6 7.7 9.3a1 1 0 00-1.4 1.4l2 2a1 1 0 001.4 0l4-4z" clipRule="evenodd" />
-                  </svg>
+                <li key={t} className="flex gap-3 leading-relaxed text-ink">
+                  <Tick className="h-6 w-6 shrink-0" />
                   {t}
                 </li>
               ))}
             </ul>
           </aside>
 
-          <div
-            className="article-prose mt-10"
-            dangerouslySetInnerHTML={{ __html: post.html }}
-          />
+          <div className="article-prose mt-12" dangerouslySetInnerHTML={{ __html: post.html }} />
 
-          {/* Author box */}
-          <footer className="mt-12 flex items-center gap-4 rounded-3xl border border-ink/5 bg-white p-6 shadow-lift">
-            <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-navy text-2xl" aria-hidden="true">
-              🎓
-            </span>
+          <footer className="mt-14 flex items-center gap-4 border-y-2 border-dashed border-rule py-6">
+            <Logo className="h-12 w-12 shrink-0" />
             <div>
               <p className="font-bold text-ink">Written by the tutors at {site.name}</p>
               <p className="text-sm text-ink-soft">
-                Specialists in handwriting, cursive, calligraphy, abacus and
-                phonics — teaching live online across the UK &amp; USA.
+                Specialists in handwriting, cursive, calligraphy, abacus and phonics,
+                teaching live online across the UK and USA.
               </p>
             </div>
           </footer>
         </div>
 
-        {/* Related */}
-        <div className="mx-auto mt-16 max-w-5xl">
-          <h2 className="text-center font-display text-2xl font-semibold">Keep reading</h2>
-          <div className="mt-8 grid gap-6 sm:grid-cols-3">
+        <div className="mx-auto mt-20 max-w-6xl">
+          <h2 className="font-display text-3xl font-extrabold tracking-tight">Keep reading</h2>
+          <div className="mt-8 grid gap-x-7 gap-y-10 sm:grid-cols-3">
             {related.map((p) => {
-              const ra = accentStyles[p.accent];
+              const rc = palette[p.accent];
               return (
-                <Link
-                  key={p.slug}
-                  href={`/blog/${p.slug}`}
-                  className="group rounded-3xl border border-ink/5 bg-white p-6 shadow-lift transition hover:-translate-y-1 hover:shadow-lift-lg"
-                >
-                  <span className={`flex h-10 w-10 items-center justify-center rounded-xl ${ra.soft} text-xl`} aria-hidden="true">
-                    {p.emoji}
+                <Link key={p.slug} href={`/blog/${p.slug}`} className="group relative block pt-7">
+                  <span className={`absolute left-5 top-0 flex h-8 items-center gap-1.5 rounded-t-md px-3 ${rc.cover} ${rc.onCover}`}>
+                    <Glyph name={categoryGlyph[p.category]} className="h-4 w-4" />
+                    <span className="label-caps">{p.category}</span>
                   </span>
-                  <h3 className="mt-4 font-display text-base font-semibold leading-snug">{p.title}</h3>
-                  <p className="mt-2 text-xs font-semibold text-ink-soft">{p.readMinutes} min read</p>
+                  <div className="h-full rounded-md border-2 border-ink/10 bg-white p-6 shadow-page transition group-hover:-translate-y-1 group-hover:border-ink/25">
+                    <h3 className="font-display text-lg font-extrabold leading-snug tracking-tight group-hover:text-blue">{p.title}</h3>
+                    <p className="mt-3 text-xs font-bold text-ink-soft">{p.readMinutes} min read</p>
+                  </div>
                 </Link>
               );
             })}
@@ -186,7 +179,7 @@ export default async function BlogPostPage({
         </div>
       </article>
 
-      <CTASection />
+      <TrialSlip />
     </>
   );
 }

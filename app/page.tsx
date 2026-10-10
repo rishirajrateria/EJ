@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Swash from "@/components/Swash";
-import HeroIllustration from "@/components/HeroIllustration";
-import ServiceCard from "@/components/ServiceCard";
-import CTASection from "@/components/CTASection";
+import BeforeAfter from "@/components/BeforeAfter";
+import { BookShelf } from "@/components/BookCover";
+import Abacus from "@/components/Abacus";
+import ReportCard from "@/components/ReportCard";
+import DotSteps from "@/components/DotSteps";
+import IndexCards, { type Testimonial } from "@/components/IndexCards";
 import FAQ from "@/components/FAQ";
+import TrialSlip from "@/components/TrialSlip";
+import SectionHead from "@/components/SectionHead";
 import JsonLd from "@/components/JsonLd";
-import Ticker from "@/components/Ticker";
-import Wave from "@/components/Wave";
+import { Underline } from "@/components/Marks";
 import { services } from "@/lib/services";
 
 export const metadata: Metadata = {
@@ -40,55 +43,45 @@ const homeFaqs = [
   },
 ];
 
-const stats = [
-  { value: "2,000+", label: "students taught" },
-  { value: "8 wks", label: "to visible transformation" },
-  { value: "1:1", label: "and small-group classes" },
-  { value: "4.9★", label: "average parent rating" },
-];
-
 const steps = [
+  { title: "Book a free trial", text: "Pick a time in your time zone. It takes 30 seconds." },
+  { title: "Get a personal plan", text: "The tutor assesses the student and maps out the path." },
+  { title: "Watch them improve", text: "Live classes, ten minutes of daily practice, progress every week." },
+];
+
+const reasons = [
   {
-    emoji: "📅",
-    title: "Book a free trial",
-    text: "Pick a time that suits your time zone. Takes 30 seconds.",
-    grad: "btn-grad",
+    lead: "100% live.",
+    text: "A tutor watches every stroke and every bead, and corrects it on the spot.",
   },
   {
-    emoji: "🔍",
-    title: "Get a personal plan",
-    text: "We assess the student's level and map the exact path forward.",
-    grad: "btn-grad-candy",
+    lead: "A method, not worksheets.",
+    text: "Structured levels with clear milestones, so you can see progress week by week.",
   },
   {
-    emoji: "🚀",
-    title: "Watch them transform",
-    text: "Live classes, tiny daily practice, visible progress every week.",
-    grad: "btn-grad",
+    lead: "Built for UK & US families.",
+    text: "After-school and weekend slots in UK, Eastern, Central and Pacific time.",
   },
 ];
 
-const testimonials = [
+const testimonials: Testimonial[] = [
   {
     quote:
-      "My son's teacher asked what changed — his books went from unreadable to the neatest in class in two months.",
+      "My son's teacher asked what changed. His books went from unreadable to the neatest in class in two months.",
     name: "Sarah M.",
-    detail: "Parent, London 🇬🇧 · Handwriting",
-    tilt: "md:-rotate-2",
+    detail: "London",
   },
   {
     quote:
-      "She now does three-digit sums in her head faster than I can type them into a calculator. It's genuinely astonishing.",
+      "She now does three-digit sums in her head faster than I can type them into a calculator.",
     name: "David R.",
-    detail: "Parent, Texas 🇺🇸 · Abacus",
-    tilt: "md:rotate-1 md:translate-y-2",
+    detail: "Texas",
   },
   {
     quote:
-      "As an adult I was embarrassed by my writing. Eight weeks later I actually enjoy writing cards by hand.",
-    name: "Priya K.",
-    detail: "Adult learner, Manchester 🇬🇧 · Handwriting",
-    tilt: "md:-rotate-1",
+      "As an adult I was embarrassed by my writing. Eight weeks later I enjoy writing cards by hand.",
+    name: "Emma K.",
+    detail: "Manchester",
   },
 ];
 
@@ -107,226 +100,146 @@ export default function HomePage() {
     <>
       <JsonLd data={faqJsonLd} />
 
-      {/* ───────────────────────── Hero ───────────────────────── */}
-      <section className="confetti relative overflow-hidden px-4 pb-16 pt-14 sm:px-6 sm:pt-20">
-        {/* color washes */}
-        <div className="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-violet/15 blur-3xl" aria-hidden="true" />
-        <div className="pointer-events-none absolute -right-24 top-24 h-80 w-80 rounded-full bg-coral/15 blur-3xl" aria-hidden="true" />
-        {/* floating doodles */}
-        <span className="animate-float-slow pointer-events-none absolute left-[6%] top-24 hidden text-3xl lg:block" style={{ "--float-rotate": "-12deg" } as React.CSSProperties} aria-hidden="true">✏️</span>
-        <span className="animate-float pointer-events-none absolute bottom-24 right-[4%] hidden text-3xl lg:block" style={{ "--float-rotate": "14deg", animationDelay: "0.8s" } as React.CSSProperties} aria-hidden="true">🎨</span>
-        <svg className="animate-float pointer-events-none absolute left-[3%] bottom-36 hidden h-10 w-16 lg:block" viewBox="0 0 64 24" fill="none" aria-hidden="true" style={{ animationDelay: "1.4s" }}>
-          <path d="M2 18 Q 12 2 22 14 T 42 12 T 62 6" stroke="#00c49a" strokeWidth="4" strokeLinecap="round" />
-        </svg>
-
-        <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2">
-          <div className="text-center lg:text-left">
-            <p className="sticker bg-teal-soft text-teal">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-teal" aria-hidden="true" />
-              Live online classes · UK 🇬🇧 &amp; USA 🇺🇸
-            </p>
-            <h1 className="mt-6 font-display text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
-              Beautiful <Swash>handwriting</Swash>.
-              <br />
-              Brilliant <span className="text-grad-candy">minds</span>.
+      {/* ───────── Hero: an exercise-book page ───────── */}
+      <section className="paper-ruled paper-margin overflow-hidden px-4 pb-20 pt-12 sm:px-6 sm:pt-16">
+        <div className="mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[1.05fr_1fr]">
+          <div>
+            <h1>
+              <span className="label-caps block text-blue">
+                Online handwriting &amp; abacus classes · UK &amp; USA
+              </span>
+              <span className="mt-5 block font-display text-[clamp(3.1rem,8.4vw,5.8rem)] font-extrabold leading-[0.95] tracking-[-0.035em] [font-stretch:86%]">
+                From scribble to{" "}
+                <span className="relative inline-block font-script text-[0.74em] font-normal tracking-normal text-redpen [font-stretch:100%]">
+                  superb
+                  <Underline />
+                </span>
+              </span>
             </h1>
-            <p className="mx-auto mt-6 max-w-md text-lg leading-relaxed text-ink-soft lg:mx-0">
-              Expert-led classes in handwriting, cursive, calligraphy, abacus
-              mental math and phonics — for kids and adults.
+            <p className="mt-8 max-w-md text-lg leading-relaxed text-ink-soft">
+              Live online lessons in handwriting, cursive, calligraphy, abacus and
+              phonics, for children from age 3 and for adults.
             </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start">
-              <Link
-                href="/contact"
-                className="btn-grad w-full rounded-full px-8 py-4 text-center text-base font-bold text-white shadow-lift-lg transition hover:-translate-y-0.5 sm:w-auto"
-              >
-                Book a Free Trial 🎉
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+              <Link href="/contact" className="btn btn-primary">
+                Book a free trial
               </Link>
-              <Link
-                href="#classes"
-                className="w-full rounded-full border-2 border-ink/10 bg-white px-8 py-4 text-center text-base font-bold text-ink transition hover:border-violet/40 hover:text-violet sm:w-auto"
-              >
-                See Classes ↓
+              <Link href="#classes" className="btn btn-secondary">
+                See the classes
               </Link>
             </div>
-            <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4 lg:max-w-lg">
-              {stats.map((s) => (
-                <div key={s.label} className="text-center lg:text-left">
-                  <p className="text-grad-berry font-display text-2xl font-bold">{s.value}</p>
-                  <p className="text-xs font-semibold text-ink-soft">{s.label}</p>
-                </div>
-              ))}
-            </div>
+            <ul className="mt-9 flex flex-wrap gap-x-6 gap-y-2 text-sm font-bold text-ink">
+              <li><span className="text-yellow-deep">★</span> 4.9 from parents</li>
+              <li><span className="text-green-deep">●</span> Max 4 per class</li>
+              <li><span className="text-pink">●</span> UK &amp; US time zones</li>
+            </ul>
           </div>
-          <HeroIllustration />
+          <BeforeAfter />
         </div>
       </section>
 
-      {/* ───────────────────────── Ticker ───────────────────────── */}
-      <Ticker />
-
-      {/* ───────────────────────── Classes ───────────────────────── */}
-      <section id="classes" className="scroll-mt-20 bg-cream px-4 py-20 sm:px-6">
+      {/* ───────── Classes: a shelf of exercise books ───────── */}
+      <section id="classes" className="scroll-mt-20 px-4 py-20 sm:px-6 sm:py-24">
         <div className="mx-auto max-w-6xl">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="sticker bg-coral-soft text-coral">🎒 Our classes</p>
-            <h2 className="mt-5 font-display text-3xl font-semibold sm:text-4xl">
-              Five skills. One <Swash color="#8a4dff">junction</Swash>.
-            </h2>
-            <p className="mt-4 text-ink-soft">
-              Every programme is live, structured and taught by specialists —
-              pick one, or combine them.
-            </p>
-          </div>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((s) => (
-              <ServiceCard key={s.slug} service={s} />
-            ))}
-            {/* Free trial filler card */}
-            <div className="bg-night relative flex flex-col justify-center overflow-hidden rounded-3xl p-7 text-white shadow-lift">
-              <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-sun/30 blur-2xl" aria-hidden="true" />
-              <p className="text-3xl" aria-hidden="true">🎁</p>
-              <h3 className="mt-4 font-display text-xl font-semibold">Not sure where to start?</h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/75">
-                Take a free assessment class — we&apos;ll recommend the perfect
-                programme for your child (or you).
-              </p>
-              <Link
-                href="/contact"
-                className="btn-grad mt-5 inline-flex w-fit items-center gap-1.5 rounded-full px-5 py-2.5 text-sm font-bold transition"
-              >
-                Claim free class
-                <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                  <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-      <div className="bg-cream">
-        <Wave fill="#fffbfa" />
-      </div>
-
-      {/* ───────────────────────── Why us ───────────────────────── */}
-      <section className="px-4 pb-20 pt-10 sm:px-6">
-        <div className="mx-auto max-w-6xl">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="sticker bg-teal-soft text-teal">💚 Why families choose us</p>
-            <h2 className="mt-5 font-display text-3xl font-semibold sm:text-4xl">
-              Not an app. Not videos.
-              <br />
-              <Swash>Real teaching.</Swash>
-            </h2>
-          </div>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {[
-              {
-                emoji: "🎥",
-                title: "100% live classes",
-                text: "A real tutor watches every stroke and bead-move, correcting instantly — the feedback apps can't give.",
-                bg: "bg-coral-soft",
-              },
-              {
-                emoji: "🧭",
-                title: "A method, not worksheets",
-                text: "Structured levels with clear milestones, so progress is measurable week by week — never random practice.",
-                bg: "bg-teal-soft",
-              },
-              {
-                emoji: "🌍",
-                title: "Built for UK & USA families",
-                text: "Evening and weekend slots across UK, Eastern, Central and Pacific time — and curricula aligned to your schools.",
-                bg: "bg-violet-soft",
-              },
-            ].map((c) => (
-              <div key={c.title} className="rounded-3xl border-2 border-ink/5 bg-white p-8 shadow-lift transition hover:-translate-y-1 hover:shadow-lift-lg">
-                <span className={`hover-wiggle flex h-14 w-14 -rotate-3 items-center justify-center rounded-2xl ${c.bg} text-3xl`} aria-hidden="true">
-                  {c.emoji}
-                </span>
-                <h3 className="mt-5 font-display text-xl font-semibold">{c.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink-soft">{c.text}</p>
-              </div>
-            ))}
+          <SectionHead title="Choose a subject" note="mix & match!" />
+          <div className="mt-12">
+            <BookShelf items={services} />
           </div>
         </div>
       </section>
 
-      {/* ───────────────────────── How it works ───────────────────────── */}
-      <div className="bg-paper">
-        <Wave fill="#f3edff" />
-      </div>
-      <section className="bg-cream px-4 pb-20 pt-10 sm:px-6">
-        <div className="mx-auto max-w-5xl">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="sticker bg-violet-soft text-violet">🚀 Getting started</p>
-            <h2 className="mt-5 font-display text-3xl font-semibold sm:text-4xl">
-              Three steps to <span className="text-grad-berry">transformation</span>
-            </h2>
-          </div>
-          <ol className="mt-14 grid gap-8 sm:grid-cols-3 sm:gap-6">
-            {steps.map((s, i) => (
-              <li key={s.title} className={`relative rounded-3xl bg-white p-8 text-center shadow-lift transition hover:-translate-y-1 ${i === 1 ? "sm:translate-y-3" : ""}`}>
-                <span className={`${s.grad} absolute -top-4 left-1/2 flex h-9 w-9 -translate-x-1/2 -rotate-6 items-center justify-center rounded-xl font-display text-sm font-bold text-white shadow-lift`}>
-                  {i + 1}
-                </span>
-                <p className="text-4xl" aria-hidden="true">{s.emoji}</p>
-                <h3 className="mt-4 font-display text-lg font-semibold">{s.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink-soft">{s.text}</p>
+      {/* ───────── Why it works ───────── */}
+      <section className="px-4 pb-20 sm:px-6 sm:pb-24">
+        <div className="mx-auto grid max-w-6xl gap-10 border-t-2 border-ink pt-12 lg:grid-cols-[0.8fr_1.2fr]">
+          <h2 className="font-display text-[clamp(2rem,4.6vw,3.2rem)] font-extrabold leading-[1.04] tracking-tight [font-stretch:92%]">
+            Real teaching. Not an app.
+          </h2>
+          <ul className="divide-y-2 divide-dashed divide-rule">
+            {reasons.map((r) => (
+              <li key={r.lead} className="py-5 text-xl leading-relaxed text-ink-soft first:pt-0 sm:text-2xl">
+                <strong className="hl font-display font-extrabold text-ink">{r.lead}</strong> {r.text}
               </li>
             ))}
-          </ol>
+          </ul>
         </div>
       </section>
-      <div className="bg-cream">
-        <Wave fill="#fffbfa" />
-      </div>
 
-      {/* ───────────────────────── Testimonials ───────────────────────── */}
-      <section className="px-4 pb-20 pt-10 sm:px-6">
+      {/* ───────── Abacus: try it ───────── */}
+      <section className="paper-squared border-y-2 border-rule px-4 py-20 sm:px-6 sm:py-24">
+        <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2">
+          <div>
+            <SectionHead title="Try a 30-second abacus lesson" />
+            <ol className="mt-8 space-y-4 text-lg text-ink">
+              <li className="flex items-center gap-4">
+                <span className="h-6 w-11 shrink-0 bg-pink [clip-path:polygon(16%_0,84%_0,100%_50%,84%_100%,16%_100%,0_50%)]" aria-hidden="true" />
+                <span><strong>Top beads</strong> are worth 5.</span>
+              </li>
+              <li className="flex items-center gap-4">
+                <span className="h-6 w-11 shrink-0 bg-blue [clip-path:polygon(16%_0,84%_0,100%_50%,84%_100%,16%_100%,0_50%)]" aria-hidden="true" />
+                <span><strong>Bottom beads</strong> are worth 1 each.</span>
+              </li>
+              <li className="flex items-center gap-4">
+                <span className="flex h-6 w-11 shrink-0 items-center" aria-hidden="true">
+                  <span className="h-2 w-full rounded-sm bg-ink" />
+                </span>
+                <span>A bead counts when it touches the <strong>bar</strong>.</span>
+              </li>
+            </ol>
+            <p className="mt-8 max-w-md leading-relaxed text-ink-soft">
+              In class, children learn to picture these beads in their head, and
+              that is how they calculate faster than a calculator.
+            </p>
+            <Link href="/abacus-classes" className="mt-6 inline-flex font-bold text-blue underline decoration-2 underline-offset-4 hover:text-blue-deep">
+              Explore abacus classes →
+            </Link>
+          </div>
+          <div className="flex justify-center lg:justify-end">
+            <Abacus />
+          </div>
+        </div>
+      </section>
+
+      {/* ───────── Results ───────── */}
+      <section className="px-4 py-20 sm:px-6 sm:py-24">
         <div className="mx-auto max-w-6xl">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="sticker bg-sun-soft text-ink">💬 Happy families</p>
-            <h2 className="mt-5 font-display text-3xl font-semibold sm:text-4xl">
-              Results parents <Swash>brag about</Swash>
-            </h2>
-          </div>
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {testimonials.map((t) => (
-              <figure key={t.name} className={`flex flex-col rounded-3xl border-2 border-ink/5 bg-white p-8 shadow-lift transition hover:rotate-0 hover:shadow-lift-lg ${t.tilt}`}>
-                <p className="text-sun" aria-label="5 out of 5 stars">★★★★★</p>
-                <blockquote className="mt-4 flex-1 leading-relaxed text-ink">
-                  “{t.quote}”
-                </blockquote>
-                <figcaption className="mt-5 border-t-2 border-dashed border-ink/10 pt-4">
-                  <p className="font-bold text-ink">{t.name}</p>
-                  <p className="text-xs font-semibold text-ink-soft">{t.detail}</p>
-                </figcaption>
-              </figure>
-            ))}
+          <SectionHead title="Our report card" />
+          <div className="mt-14">
+            <ReportCard />
           </div>
         </div>
       </section>
 
-      {/* ───────────────────────── FAQ ───────────────────────── */}
-      <div className="bg-paper">
-        <Wave fill="#f3edff" />
-      </div>
-      <section className="bg-cream px-4 pb-20 pt-10 sm:px-6">
-        <div className="mx-auto max-w-4xl">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="sticker bg-sky-soft text-sky">💡 Good to know</p>
-            <h2 className="mt-5 font-display text-3xl font-semibold sm:text-4xl">Questions, answered</h2>
+      {/* ───────── How to start ───────── */}
+      <section className="px-4 pb-20 sm:px-6 sm:pb-24">
+        <div className="mx-auto max-w-6xl">
+          <SectionHead title="Three steps to get started" />
+          <div className="mt-12">
+            <DotSteps steps={steps} />
           </div>
+        </div>
+      </section>
+
+      {/* ───────── Parents ───────── */}
+      <section className="bg-yellow-soft px-4 py-20 sm:px-6 sm:py-24">
+        <div className="mx-auto max-w-6xl">
+          <SectionHead title="Notes from parents" note="real results!" />
+          <div className="mt-14">
+            <IndexCards items={testimonials} />
+          </div>
+        </div>
+      </section>
+
+      {/* ───────── FAQ ───────── */}
+      <section className="px-4 py-20 sm:px-6 sm:py-24">
+        <div className="mx-auto max-w-6xl">
+          <SectionHead title="Questions parents ask" className="mx-auto max-w-3xl" />
           <div className="mt-10">
             <FAQ faqs={homeFaqs} />
           </div>
         </div>
       </section>
-      <div className="bg-cream">
-        <Wave fill="#fffbfa" />
-      </div>
 
-      <CTASection />
+      <TrialSlip />
     </>
   );
 }

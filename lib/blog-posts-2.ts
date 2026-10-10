@@ -10,8 +10,7 @@ export const postsBatchTwo: Post[] = [
     date: "2026-08-30",
     readMinutes: 5,
     category: "Cursive",
-    accent: "sun",
-    emoji: "➰",
+    accent: "violet",
     keyTakeaways: [
       "Most children learn print first (ages 4–6), then cursive from around age 7.",
       "UK schools typically expect joined handwriting by Year 3; many US states have reinstated cursive.",
@@ -66,8 +65,7 @@ export const postsBatchTwo: Post[] = [
     date: "2026-08-22",
     readMinutes: 5,
     category: "Parenting",
-    accent: "teal",
-    emoji: "✏️",
+    accent: "pink",
     keyTakeaways: [
       "Grips develop in stages — a fist grip at age 2 is normal, at age 6 it needs help.",
       "The goal is the dynamic tripod grip: thumb, index and middle finger.",
@@ -117,8 +115,7 @@ export const postsBatchTwo: Post[] = [
     date: "2026-08-14",
     readMinutes: 6,
     category: "Handwriting",
-    accent: "violet",
-    emoji: "🖊️",
+    accent: "blue",
     keyTakeaways: [
       "Adults often improve faster than children — motivation and self-analysis are superpowers.",
       "Audit your writing first: most adults have 4–6 problem letters, not 26.",
@@ -173,8 +170,7 @@ export const postsBatchTwo: Post[] = [
     date: "2026-08-05",
     readMinutes: 5,
     category: "Handwriting",
-    accent: "coral",
-    emoji: "💻",
+    accent: "blue",
     keyTakeaways: [
       "Live online handwriting teaching works because the tutor watches the hand, not just the page.",
       "Online beats in-person on tutor quality, scheduling and consistency.",

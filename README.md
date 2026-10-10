@@ -7,7 +7,12 @@ families in the **UK & USA**.
 ## Tech
 
 - **Next.js 15** (App Router, fully static — every page pre-rendered)
-- **Tailwind CSS 4** with a custom design system (Fraunces + Inter, warm paper palette)
+- **Tailwind CSS 4** with an "exercise book" design system: ruled and squared paper,
+  coloured exercise-book covers for each class, teacher's red-pen marks
+- Fonts: Bricolage Grotesque (headings), Figtree (body), Playpen Sans (handwritten notes),
+  Playwrite GB S (the cursive model taught in British schools), Reenie Beanie (the messy "before")
+- `public/junction.js`: a tiny script for the interactive abacus, the mobile menu and the
+  free-trial reply-slip form (everything renders fully without it)
 - Zero client-side data fetching; ~106 kB first-load JS
 
 ## Pages

@@ -10,8 +10,7 @@ export const postsBatchOne: Post[] = [
     date: "2026-09-28",
     readMinutes: 7,
     category: "Handwriting",
-    accent: "coral",
-    emoji: "✍️",
+    accent: "blue",
     keyTakeaways: [
       "Fix posture and pencil grip before practising letters — they cause most messiness.",
       "Ten minutes of focused daily practice beats an hour once a week.",
@@ -66,8 +65,7 @@ export const postsBatchOne: Post[] = [
     date: "2026-09-21",
     readMinutes: 6,
     category: "Abacus",
-    accent: "teal",
-    emoji: "🧮",
+    accent: "green",
     keyTakeaways: [
       "Abacus training teaches children to calculate by visualising beads — true mental math.",
       "It engages visual, motor and logical processing at the same time.",
@@ -116,8 +114,7 @@ export const postsBatchOne: Post[] = [
     date: "2026-09-14",
     readMinutes: 5,
     category: "Abacus",
-    accent: "sky",
-    emoji: "🎯",
+    accent: "green",
     keyTakeaways: [
       "The ideal window to start abacus is ages 5–8, when visualisation ability develops fastest.",
       "The only prerequisites: recognising numbers 0–9 and sitting focused for 20 minutes.",
@@ -166,8 +163,7 @@ export const postsBatchOne: Post[] = [
     date: "2026-09-07",
     readMinutes: 6,
     category: "Handwriting",
-    accent: "violet",
-    emoji: "🔍",
+    accent: "blue",
     keyTakeaways: [
       "Messy handwriting always has a cause — usually mechanical and fixable.",
       "The top culprits: incorrect grip, weak fine-motor strength, and poor letter formation habits.",

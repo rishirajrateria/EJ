@@ -1,22 +1,50 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import {
+  Bricolage_Grotesque,
+  Figtree,
+  Playpen_Sans,
+  Playwrite_GB_S,
+  Reenie_Beanie,
+} from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import { site, absoluteUrl } from "@/lib/site";
 import "./globals.css";
 
-const inter = Inter({
+const display = Bricolage_Grotesque({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-bricolage",
+  display: "swap",
+  axes: ["opsz", "wdth"],
+});
+
+const body = Figtree({
+  subsets: ["latin"],
+  variable: "--font-figtree",
   display: "swap",
 });
 
-const fraunces = Fraunces({
+// Teacher's handwriting: margin notes, index cards
+const hand = Playpen_Sans({
   subsets: ["latin"],
-  variable: "--font-fraunces",
+  variable: "--font-playpen",
   display: "swap",
-  axes: ["SOFT", "WONK", "opsz"],
+});
+
+// The cursive model taught in British schools
+const script = Playwrite_GB_S({
+  variable: "--font-playwrite",
+  display: "swap",
+});
+
+// Deliberately messy "before" handwriting
+const scrawl = Reenie_Beanie({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-reenie",
+  display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -118,13 +146,14 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
+    <html lang="en" className={`${display.variable} ${body.variable} ${hand.variable} ${script.variable} ${scrawl.variable}`}>
       <body>
         <JsonLd data={organizationJsonLd} />
         <JsonLd data={websiteJsonLd} />
         <Header />
         <main>{children}</main>
         <Footer />
+        <script src="/junction.js" defer />
       </body>
     </html>
   );

@@ -1,13 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import Swash from "@/components/Swash";
 import FAQ from "@/components/FAQ";
-import CTASection from "@/components/CTASection";
 import JsonLd from "@/components/JsonLd";
-import ServiceCard from "@/components/ServiceCard";
-import { accentStyles } from "@/components/accents";
+import TrialSlip from "@/components/TrialSlip";
+import SectionHead from "@/components/SectionHead";
+import Checklist from "@/components/Checklist";
+import DotSteps from "@/components/DotSteps";
+import BeforeAfter from "@/components/BeforeAfter";
+import Abacus from "@/components/Abacus";
+import { BookShelf, Cover } from "@/components/BookCover";
+import { Underline } from "@/components/Marks";
 import { services, getService } from "@/lib/services";
+import { palette } from "@/lib/palette";
 import { site, absoluteUrl } from "@/lib/site";
 
 export const dynamicParams = false;
@@ -41,14 +46,6 @@ export async function generateMetadata({
   };
 }
 
-const accentHex: Record<string, string> = {
-  coral: "#ff4d6d",
-  teal: "#00a87e",
-  violet: "#8a4dff",
-  sun: "#ffd23f",
-  sky: "#0097e0",
-};
-
 export default async function ServicePage({
   params,
 }: {
@@ -58,8 +55,8 @@ export default async function ServicePage({
   const service = getService(slug);
   if (!service) notFound();
 
-  const a = accentStyles[service.accent];
-  const others = services.filter((s) => s.slug !== service.slug).slice(0, 3);
+  const p = palette[service.accent];
+  const others = services.filter((s) => s.slug !== service.slug);
 
   const courseJsonLd = {
     "@context": "https://schema.org",
@@ -120,119 +117,105 @@ export default async function ServicePage({
       <JsonLd data={breadcrumbJsonLd} />
 
       {/* ───────── Hero ───────── */}
-      <section className="confetti relative overflow-hidden px-4 pb-16 pt-14 sm:px-6 sm:pt-20">
-        <div className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full opacity-15 blur-3xl" style={{ background: accentHex[service.accent] }} aria-hidden="true" />
-        <div className="pointer-events-none absolute -left-32 bottom-0 h-72 w-72 rounded-full bg-violet/10 blur-3xl" aria-hidden="true" />
-        <div className="mx-auto max-w-4xl text-center">
-          <p className={`sticker ${a.soft} ${a.text}`}>
-            <span aria-hidden="true">{service.emoji}</span>
-            {service.hero.eyebrow}
-          </p>
-          <h1 className="mt-6 font-display text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
-            {service.hero.title}{" "}
-            <Swash color={accentHex[service.accent]}>{service.hero.highlight}</Swash>
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-ink-soft">
-            {service.hero.subtitle}
-          </p>
-
-          <div className="mx-auto mt-8 flex max-w-2xl flex-wrap items-center justify-center gap-3">
-            {[service.ages, service.duration, service.format].map((chip) => (
-              <span key={chip} className="rounded-full border border-ink/10 bg-white px-4 py-2 text-sm font-bold text-ink-soft shadow-lift">
-                {chip}
+      <section className="paper-ruled paper-margin overflow-hidden px-4 pb-20 pt-10 sm:px-6 sm:pt-14">
+        <div className="mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[1.1fr_1fr]">
+          <div>
+            <nav aria-label="Breadcrumb" className="text-sm font-bold text-ink-soft">
+              <Link href="/" className="hover:text-ink">Home</Link>
+              <span className="mx-2" aria-hidden="true">/</span>
+              <Link href="/#classes" className="hover:text-ink">Classes</Link>
+            </nav>
+            <h1 className="mt-6">
+              <span className={`label-caps block ${p.text}`}>{service.name} · Online</span>
+              <span className="mt-4 block font-display text-[clamp(2.8rem,7vw,5rem)] font-extrabold leading-[0.98] tracking-[-0.03em] [font-stretch:88%]">
+                {service.hero.title}{" "}
+                <span className="relative inline-block font-script text-[0.72em] font-normal tracking-normal text-redpen [font-stretch:100%]">
+                  {service.hero.highlight}
+                  <Underline />
+                </span>
               </span>
-            ))}
+            </h1>
+            <p className="mt-8 max-w-lg text-lg leading-relaxed text-ink-soft">{service.hero.subtitle}</p>
+
+            {/* facts, written like a book label */}
+            <dl className="mt-8 grid max-w-lg gap-x-6 gap-y-3 rounded-md border-2 border-ink/15 bg-white px-5 py-4 sm:grid-cols-3">
+              {[
+                ["Age", service.ages.replace(/^Ages /, "")],
+                ["Length", service.duration],
+                ["Format", service.format.replace(/^Live online · /, "Live · ")],
+              ].map(([k, v]) => (
+                <div key={k}>
+                  <dt className="label-caps text-ink-soft">{k}</dt>
+                  <dd className="mt-0.5 border-b border-dotted border-ink/30 pb-1 font-hand text-[15px] font-semibold text-blue-deep">{v}</dd>
+                </div>
+              ))}
+            </dl>
+
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+              <Link href="/contact" className="btn btn-primary">
+                Book a free trial
+              </Link>
+              <a href="#lesson-plan" className="btn btn-secondary">
+                See the lesson plan
+              </a>
+            </div>
           </div>
 
-          <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link
-              href="/contact"
-              className={`w-full rounded-full ${a.bg} ${a.fg} px-8 py-4 text-center text-base font-bold shadow-lift-lg transition hover:-translate-y-0.5 hover:opacity-90 sm:w-auto`}
-            >
-              Book a Free Trial Class
-            </Link>
-            <a
-              href="#how-it-works"
-              className="w-full rounded-full border-2 border-ink/10 bg-white px-8 py-4 text-center text-base font-bold text-ink transition hover:border-ink/25 sm:w-auto"
-            >
-              How it works ↓
-            </a>
+          <div className="flex justify-center lg:justify-end">
+            {service.slug === "handwriting-classes" ? (
+              <BeforeAfter />
+            ) : service.slug === "abacus-classes" ? (
+              <Abacus />
+            ) : (
+              <div className="group w-[min(78%,340px)] rotate-[3deg]">
+                <Cover service={service} large />
+              </div>
+            )}
           </div>
         </div>
       </section>
 
       {/* ───────── Outcomes ───────── */}
-      <section className="bg-cream px-4 py-20 sm:px-6">
+      <section className="px-4 py-20 sm:px-6 sm:py-24">
         <div className="mx-auto max-w-6xl">
-          <h2 className="text-center font-display text-3xl font-semibold sm:text-4xl">
-            What students <Swash color={accentHex[service.accent]}>walk away with</Swash>
-          </h2>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {service.outcomes.map((o, i) => (
-              <div key={o.title} className={`rounded-3xl border-2 border-ink/5 bg-white p-7 shadow-lift transition hover:-translate-y-1 hover:shadow-lift-lg ${i % 2 === 1 ? "lg:translate-y-3" : ""}`}>
-                <span className={`flex h-10 w-10 -rotate-6 items-center justify-center rounded-xl ${a.soft} font-display text-base font-bold ${a.text}`}>
-                  {i + 1}
-                </span>
-                <h3 className="mt-4 font-display text-lg font-semibold">{o.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink-soft">{o.text}</p>
-              </div>
-            ))}
+          <SectionHead title="By the end of the course" />
+          <div className="mt-12">
+            <Checklist items={service.outcomes} />
           </div>
         </div>
       </section>
 
-      {/* ───────── Journey ───────── */}
-      <section id="how-it-works" className="scroll-mt-20 px-4 py-20 sm:px-6">
-        <div className="mx-auto max-w-4xl">
-          <h2 className="text-center font-display text-3xl font-semibold sm:text-4xl">
-            The journey, step by step
-          </h2>
-          <ol className="relative mt-14 space-y-10 before:absolute before:bottom-6 before:left-6 before:top-2 before:w-0.5 before:bg-ink/10 sm:before:left-7">
-            {service.steps.map((s, i) => (
-              <li key={s.title} className="relative flex gap-6 pl-0">
-                <span className={`relative z-10 flex h-12 w-12 shrink-0 -rotate-6 items-center justify-center rounded-2xl ${a.bg} ${a.fg} font-display text-lg font-bold shadow-lift sm:h-14 sm:w-14`}>
-                  {i + 1}
-                </span>
-                <div className="rounded-3xl border-2 border-ink/5 bg-white p-6 shadow-lift transition hover:-translate-y-0.5">
-                  <h3 className="font-display text-lg font-semibold">{s.title}</h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{s.text}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
+      {/* ───────── Lesson plan ───────── */}
+      <section id="lesson-plan" className={`scroll-mt-20 px-4 py-20 sm:px-6 sm:py-24 ${p.soft}`}>
+        <div className="mx-auto max-w-6xl">
+          <SectionHead title="The lesson plan" note="one step at a time" />
+          <div className="mt-12">
+            <DotSteps steps={service.steps} label={(i) => `Stage ${i + 1}`} />
+          </div>
         </div>
       </section>
 
       {/* ───────── FAQ ───────── */}
-      <section className="bg-cream px-4 py-20 sm:px-6">
-        <div className="mx-auto max-w-4xl">
-          <h2 className="text-center font-display text-3xl font-semibold sm:text-4xl">
-            {service.shortName} questions, answered
-          </h2>
+      <section className="px-4 py-20 sm:px-6 sm:py-24">
+        <div className="mx-auto max-w-6xl">
+          <SectionHead title={`${service.shortName} questions`} className="mx-auto max-w-3xl" />
           <div className="mt-10">
             <FAQ faqs={service.faqs} />
           </div>
         </div>
       </section>
 
-      {/* ───────── Related ───────── */}
-      <section className="px-4 py-20 sm:px-6">
+      {/* ───────── Other classes ───────── */}
+      <section className="border-t-2 border-rule px-4 py-20 sm:px-6 sm:py-24">
         <div className="mx-auto max-w-6xl">
-          <h2 className="text-center font-display text-2xl font-semibold sm:text-3xl">
-            Families also love
-          </h2>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {others.map((s) => (
-              <ServiceCard key={s.slug} service={s} />
-            ))}
+          <SectionHead title="Other subjects" />
+          <div className="mt-12">
+            <BookShelf items={others} />
           </div>
         </div>
       </section>
 
-      <CTASection
-        title={`Try a free ${service.shortName.toLowerCase()} class`}
-        text="Meet the tutor, experience the method live, and get a personal plan — free, with no obligation."
-      />
+      <TrialSlip title={`Book a free ${service.shortName.toLowerCase()} lesson`} />
     </>
   );
 }

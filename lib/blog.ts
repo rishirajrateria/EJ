@@ -1,3 +1,4 @@
+import type { Accent } from "./palette";
 import { postsBatchOne } from "./blog-posts-1";
 import { postsBatchTwo } from "./blog-posts-2";
 
@@ -10,8 +11,7 @@ export type Post = {
   updated?: string; // ISO
   readMinutes: number;
   category: "Handwriting" | "Abacus" | "Cursive" | "Parenting";
-  accent: "coral" | "teal" | "violet" | "sun" | "sky";
-  emoji: string;
+  accent: Accent;
   keyTakeaways: string[];
   /** Trusted, hand-authored HTML written in this repo (no user input). */
   html: string;
